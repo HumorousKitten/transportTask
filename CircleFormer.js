@@ -20,7 +20,7 @@ class CircleFormer {
                                     .filter(i => TableUtils.countVolumesInLine(temp, i) === 1);
 
             lines.push(...deletedLines)
-            temp = TableUtils.deleteLine(table, deletedLines)
+            temp = TableUtils.deleteLine(table, deletedLines) 
 
             const deletedColumns = IntStream
                                     .range(1, temp[0].length - 1)

@@ -6,7 +6,7 @@ class TableService {
 
     static createAndFillNewTable(data) {
         const table = document.createElement('table');
-        table.border = '1';
+        table.classList.add('table')
         this.fillTableFromMatrix(table, data);
         return table;
     }
@@ -31,7 +31,11 @@ class TableService {
         for (let i = 0; i < data.length; i++) {
             table.appendChild(document.createElement('tr'));
             for (let j = 0; j < data[i].length; j++) {
-                table.getElementsByTagName('tr')[i].appendChild(document.createElement('td'));
+                const td = document.createElement('td')
+                if((i === 0 && j === 0) || (i === data.length - 1 && j === 0) || (i === 0 && j === data[i].length - 1) || (i === data.length - 1 && j === data[i].length - 1)) {
+                    td.classList.add('noneBorder')
+                }
+                table.getElementsByTagName('tr')[i].appendChild(td);
             }
         }
     }
@@ -56,6 +60,7 @@ class TableService {
                 const cell = table.getElementsByTagName('tr')[i].getElementsByTagName('td')[j];
 
                 const sup = document.createElement('sup');
+                sup.classList.add('transportCost')
                 sup.innerText = data[i][j].transportCost;
                 if (data[i][j].hasVolume()) {
                     cell.innerText = data[i][j].volume;
@@ -71,10 +76,12 @@ class TableService {
                     sub.className = 'indexes';
                     sub.innerText = data[i][j].sign;
                     cell.appendChild(sub);
-                    if (data[i][j].hasVolume()) {
-                        cell.style.backgroundColor = 'yellow';
-                    } else {
+                    if (data[i][j].hasVolume() && data[i][j].sign === '+') {
                         cell.style.backgroundColor = 'lightgreen';
+                    } else if(data[i][j].sign === '+' && !data[i][j].hasVolume()) {
+                        cell.style.backgroundColor = 'red';
+                    }else {
+                        cell.style.backgroundColor = 'yellow';
                     }
                 }
             })

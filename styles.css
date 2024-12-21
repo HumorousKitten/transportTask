@@ -1,8 +1,44 @@
 .indexes {
-    position: relative;
-    left: -.5em;
+	position: absolute;
+	right: 5px;
+    bottom: 0;
+
 }
 
-.aloneSup {
-    float: right;
+.table {
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 10px 10px;
 }
+
+.table tr td{
+    border: 1px solid black;
+    padding: 20px;
+    position: relative;
+    font-size: 20px;
+}
+
+.table tr td + td {
+    margin-left: 10px;
+}
+
+.table tr td sup{
+    position: absolute;
+    right: 0;
+    top: 0;    
+}
+
+.finalAnswer {
+    font-size: 40px;
+    background-color: #1c1c1c;
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.noneBorder {
+    border: none !important;
+}
+
+
