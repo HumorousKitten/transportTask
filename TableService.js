@@ -1,7 +1,7 @@
 class TableService {
 
     static colorAllowedElementInTable(table, k, s) {
-        table.getElementsByTagName('tr')[k].getElementsByTagName('td')[s].style.backgroundColor = 'lightgreen';
+        table.getElementsByTagName('tr')[k].getElementsByTagName('td')[s].style.backgroundColor = 'red';
     }
 
     static createAndFillNewTable(data) {
